@@ -13,7 +13,7 @@ const Home = (props) => {
   }, [filteredData]);
 
   useEffect(() => {
-    setFilteredData(data);
+    setFilteredData(data.slice(0, 4));
   }, []);
 
   return (
