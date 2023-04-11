@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./ProductCatalog.css";
 import Container from "../../components/container/Container";
 import { products } from "../../products";
-import { Link } from "react-router-dom";
 
-const ProductCatalog = ({ onAddToCart, id }) => {
+const ProductCatalog = ({ onAddToCart }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const handleCategoryChange = (event) => {
