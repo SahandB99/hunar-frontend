@@ -46,7 +46,7 @@ const Login = () => {
     if (formData.email !== "" && formData.password !== "") {
       setStatus("typing");
     } else {
-      setStatus("empity");
+      setStatus("empty");
     }
   }, [formData]);
 
