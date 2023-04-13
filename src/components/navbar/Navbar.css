@@ -1,0 +1,161 @@
+.navbar {
+  height: 70px;
+}
+
+.navbar .logo img {
+  height: 110px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navbar a:hover {
+  color: rgb(23, 136, 106);
+  text-decoration: underline;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+  }
+  .navbar .logo img {
+    height: 80px;
+  }
+  .navbar .logo-name {
+    display: none;
+  }
+  .navbar ul {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px);
+    background-color: #fff;
+    z-index: 1;
+    overflow-y: auto;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  .navbar ul.open {
+    transform: translateY(0);
+  }
+  .navbar ul li {
+    margin-left: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .navbar a {
+    color: #000;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid #000;
+  }
+  .navbar a:hover {
+    color: rgb(23, 136, 106);
+    text-decoration: none;
+  }
+  .navbar ul li:last-child {
+    margin-bottom: 0;
+  }
+  .navbar .menu-icon {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+  }
+  .navbar .menu-icon span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  .navbar .menu-icon span:first-child {
+    transform: translateY(-8px);
+  }
+  .navbar .menu-icon span:last-child {
+    transform: translateY(8px);
+  }
+  .navbar ul.open + .menu-icon span:first-child {
+    transform: rotate(45deg) translateY(4px);
+  }
+  .navbar ul.open + .menu-icon span:last-child {
+    transform: rotate(-45deg) translateY(-4px);
+  }
+  .navbar ul.open + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+}
+
+/* hide the menu by default */
+.nav-menu {
+  list-style-type: none;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+/* show the menu when the screen is large enough */
+@media screen and (min-width: 768px) {
+  .nav-menu {
+    display: flex;
+  }
+}
+
+/* show the menu icon when the screen is small */
+.menu-icon {
+  display: block;
+  cursor: pointer;
+}
+
+/* hide the menu icon when the screen is large enough */
+@media screen and (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+}
+
+/* show the menu when the menuOpen state variable is true */
+.nav-menu.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10;
+}

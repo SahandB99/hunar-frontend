@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../components/container/Container";
-import "./Article.style.css";
+import "./Product.style.css";
 import { data } from "../../data";
 
-const Article = () => {
+const Product = () => {
   const [article, setArticle] = useState();
   const { id } = useParams();
 
@@ -36,4 +36,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default Product;

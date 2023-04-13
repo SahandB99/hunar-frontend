@@ -8,7 +8,7 @@ import ArticleCard from "../../components/cards/ArticleCard";
 import Button from "../../components/button/Button";
 import Container from "../../components/container/Container";
 
-const Articles = () => {
+const Products = () => {
   const [searchValue, setSearch] = useSearchParams({ searchValue: "" });
   const text = searchValue.get("searchValue");
   const location = useLocation();
@@ -59,4 +59,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Products;

@@ -19,14 +19,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setStatus("submitting");
-    // try {
-    //   await submitForm(formData);
-    //   setStatus("success");
-    // } catch (err) {
-    //   setStatus("typing");
-    //   setError(err);
-    // }
+    setStatus("submitting");
+    try {
+      await submitForm(formData);
+      setStatus("success");
+    } catch (err) {
+      setStatus("typing");
+      setError(err);
+    }
     dispatch(login(formData));
     /* 
       {

@@ -2,10 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Articles from "./pages/articles/Articles";
+import Products from "./pages/articles/Products";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
-import Article from "./pages/articles/Article";
+import Product from "./pages/articles/Product";
 import AddArticle from "./pages/articles/AddArticle";
 import NotFound from "./pages/NotFound";
 import ProductCatalog from "./pages/productCatalog/ProductCatalog";
@@ -21,14 +21,17 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/productCatalog" element={<ProductCatalog />} />
+        <Route path="/productCatalog">
+          <Route index element={<ProductCatalog />} />
+          <Route path=":id" element={<Product />} />
+        </Route>
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="/articles">
+        {/* <Route path="/articles">
           <Route index element={<Articles />} />
-          <Route path=":id" element={<Article />} />
+          <Route path=":id" element={<Product />} />
           <Route path="addarticle" element={<AddArticle />} />
-        </Route>
+        </Route> */}
 
         <Route path="*" element={<NotFound />} />
       </Routes>

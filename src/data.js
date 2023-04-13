@@ -35,4 +35,13 @@ export const data = [
     imgUrl:
       "https://cdn0.rubylane.com/_podl/item/2041715/JUL228/Coachella-Valley-California-Leon-Rene-Pescheret-pic-1A-720%3a10.10-6655efca-83a9a0.webp",
   },
+  {
+    id: 5,
+    title: "Trinity Antiques",
+    desc: "Antique 19th Century Roses Painting, Gilt Frame Georgian English Country House Circa 1830",
+    price: "425$",
+    category: "Art",
+    imgUrl:
+      "https://cdn0.rubylane.com/_podl/item/454213/TA14125/Antique-19th-Century-Roses-Painting-Gilt-pic-1A-720%3a10.10-b054c828-f.webp",
+  },
 ];

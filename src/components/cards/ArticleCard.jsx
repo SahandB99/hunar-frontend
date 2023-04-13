@@ -15,7 +15,7 @@ const ArticleCard = ({ id, title, desc, price, category, imgUrl }) => {
         <p className="price">{price}</p>
       </div>
       <div className="read-more">
-        <Link to={`/articles/${id}`}> Read more</Link>
+        <Link to={`/productCatalog/${id}`}> Read more</Link>
       </div>
     </article>
   );
