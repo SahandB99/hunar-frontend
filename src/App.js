@@ -10,19 +10,6 @@ import AddArticle from "./pages/articles/AddArticle";
 import NotFound from "./pages/NotFound";
 import ProductCatalog from "./pages/productCatalog/ProductCatalog";
 import Cart from "./pages/cart/Cart";
-// import express from "express";
-// import morgan from "morgan";
-// import { connectDb } from "./config/db.js";
-// import artsRoutes from "./routes/arts.routes.js";
-// import dotenv from "dotenv";
-
-// dotenv.config();
-
-// connectDb();
-
-// const app = express();
-
-// app.use(express.json());
 
 function App() {
   const isDark = useSelector((state) => state.theme.isDark);

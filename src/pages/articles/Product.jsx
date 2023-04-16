@@ -8,8 +8,6 @@ const Product = () => {
   const [article, setArticle] = useState();
   const { id } = useParams();
 
-  // {id:1 , username:"hama"}
-
   useEffect(() => {
     for (const d of data) {
       if (d.id.toString() === id) {
