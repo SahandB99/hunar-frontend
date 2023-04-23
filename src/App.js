@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Products from "./pages/articles/Products";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
 import Product from "./pages/articles/Product";

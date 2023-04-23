@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 
-import "./Articles.css";
+import "./Products.css";
 import { products } from "../../products";
 
 import ArticleCard from "../../components/cards/ArticleCard";
