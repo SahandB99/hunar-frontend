@@ -43,10 +43,20 @@ export const products = [
     id: 5,
     name: "Studio Juliano",
     description:
-      "Coachella Valley California, Leon Rene Pescheret Aquatint, 1940's",
-    category: "Western-art",
-    price: 325,
+      "Vintage Country Watercolor, Signed and Dated",
+    category: "Art",
+    price: 100,
     imgUrl:
-      "https://cdn0.rubylane.com/_podl/item/2041715/JUL228/Coachella-Valley-California-Leon-Rene-Pescheret-pic-1A-720%3a10.10-6655efca-83a9a0.webp",
+      "https://cdn0.rubylane.com/_podl/item/2041715/JUL541/Vintage-Country-Watercolor-Signed-Dated-pic-1A-720%3a10.10-5afd4a82-83a9a0.webp",
+  },
+  {
+    id: 6,
+    name: "Birch Hall Antiques",
+    description:
+      "Antique Julius Paul Schmidt-Felling Patinated Bronze Young Boy Smoking",
+    category: "Sculptor",
+    price: 495,
+    imgUrl:
+      "https://cdn0.rubylane.com/_podl/item/1670704/112603719A/Antique-Julius-Paul-Schmidt-Felling-Patinated-pic-1A-720%3a10.10-6a7928b1-99abbc.webp",
   },
 ];

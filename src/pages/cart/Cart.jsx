@@ -14,7 +14,14 @@ const Cart = () => {
     removeItem, 
     emptyCart} = useCart();
 
-    if(isEmpty) return <h1>Your cart is empty</h1>
+    if(isEmpty) return (
+    <Container>
+      <div className="header-info">
+        <h1 className="text-red-600 text-3xl">Your cart is empty</h1>
+        <p className="font-semibold">Try adding some products to your cart and come back again</p>
+      </div>
+    </Container>
+    )
 
   return(
     <Container>
@@ -38,12 +45,12 @@ const Cart = () => {
                 <td><img src={item.imgUrl} alt="" /></td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>
-                <td className="item-price">{item.price}</td>
+                <td className="item-price">${item.price}</td>
                 <td className="item-quantity">{item.quantity}</td>
                 <td>
                   <div className="edit-buttons">
-                  <button className="quantity-btn" onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>-</button>
-                  <button className="quantity-btn" onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>+</button>
+                  <button className="quantity-btn-minus" onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>-</button>
+                  <button className="quantity-btn-plus" onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>+</button>
                   <button className="remove-btn" onClick={() => removeItem(item.id)}>Remove Item</button>
                   </div>
                 </td>

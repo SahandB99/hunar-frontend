@@ -44,6 +44,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.2s ease-in-out;
   width: 250px;
+  justify-content: flex-end;
 }
 
 .product-catalog__item:hover {
