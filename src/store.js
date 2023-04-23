@@ -9,9 +9,3 @@ export default configureStore({
     user: userReducer,
   },
 });
-
-/* state = {
-  theme: {
-    isDark: false
-  }
-} */

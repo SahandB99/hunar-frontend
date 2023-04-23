@@ -7,7 +7,7 @@ const ArticleCard = ({ id, title, desc, price, category, imgUrl }) => {
   return (
     <article className="card">
       <figure>
-        <img src={imgUrl} alt="image" />
+        <img src={imgUrl} alt="Card Image" />
       </figure>
       <div className="content">
         <h1>{title}</h1>

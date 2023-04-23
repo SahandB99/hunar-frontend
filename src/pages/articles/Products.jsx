@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 
 import "./Articles.css";
-import { data } from "../../data";
+import { products } from "../../products";
 
 import ArticleCard from "../../components/cards/ArticleCard";
 import Button from "../../components/button/Button";
@@ -13,29 +13,29 @@ const Products = () => {
   const text = searchValue.get("searchValue");
   const location = useLocation();
 
-  const [filteredData, setFilteredData] = useState();
+  const [filteredProducts, setFilteredProducts] = useState();
 
   // const [fetchData, setFetchData] = useState([]);
 
-  const cachedData = useMemo(() => {
+  const cachedProduct = useMemo(() => {
     return (
-      filteredData && filteredData.map((fd) => ({ ...fd, date: Date.now() }))
+      filteredProducts && filteredProducts.map((fd) => ({ ...fd, date: Date.now() }))
     );
-  }, [filteredData]);
+  }, [filteredProducts]);
 
   const handleFilter = (category) => {
-    const dataFiltered = data.filter((article) => {
+    const dataFiltered = products.filter((article) => {
       return article.category.toLocaleLowerCase() === category;
     });
-    setFilteredData(dataFiltered);
+    setFilteredProducts(dataFiltered);
   };
 
   useEffect(() => {
-    setFilteredData(data);
+    setFilteredProducts(products);
   }, []);
 
   const handleAllData = () => {
-    setFilteredData(data);
+    setFilteredProducts(products);
   };
 
   return (
@@ -50,8 +50,8 @@ const Products = () => {
         onChange={(e) => setSearch({ searchValue: e.target.value })}
       />
       <section className="articles">
-        {filteredData &&
-          cachedData.map((article) => {
+        {filteredProducts &&
+          cachedProduct.map((article) => {
             return <ArticleCard {...article} key={article.id} />;
           })}
       </section>

@@ -10,9 +10,9 @@
   max-width: 1000px;
 }
 
-.product:hover {
+/* .product:hover {
   transform: scale(1.05);
-}
+} */
 
 .product-title {
   font-size: 1.5rem;
