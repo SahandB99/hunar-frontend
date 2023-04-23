@@ -9,12 +9,14 @@ import AddArticle from "./pages/articles/AddArticle";
 import NotFound from "./pages/NotFound";
 import ProductCatalog from "./pages/productCatalog/ProductCatalog";
 import Cart from "./pages/cart/Cart";
+import { CartProvider } from "react-use-cart";
 
 function App() {
   const isDark = useSelector((state) => state.theme.isDark);
 
   return (
     <div className={isDark ? "bg-dark" : ""}>
+      <CartProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -34,6 +36,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </CartProvider>
     </div>
   );
 }

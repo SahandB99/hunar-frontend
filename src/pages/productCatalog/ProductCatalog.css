@@ -77,7 +77,7 @@
 }
 
 .product-catalog__item-button {
-  background-color: #ff0080;
+  background-color: #444042;
   border: none;
   color: #fff;
   padding: 10px;
@@ -87,5 +87,9 @@
 }
 
 .product-catalog__item-button:hover {
-  background-color: #ff0066;
+  background-color: #ec6a1e;
+}
+
+.product-catalog__item-button:active{
+  transform: translateY(2px);
 }

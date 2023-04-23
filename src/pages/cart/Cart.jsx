@@ -1,63 +1,69 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useCart } from "react-use-cart";
 import Container from "../../components/container/Container";
+import "./Cart.styles.css"
 
-function Cart() {
-  const [cartItems, setCartItems] = useState(
-    JSON.parse(localStorage.getItem("cartItems")) || []
-  );
+const Cart = () => {
+  const { 
+    isEmpty,
+    totalUniqueItems, 
+    items, 
+    totalItems, 
+    cartTotal, 
+    updateItemQuantity, 
+    removeItem, 
+    emptyCart} = useCart();
 
-  const handleRemoveFromCart = (index) => {
-    const updatedCartItems = [...cartItems];
-    updatedCartItems.splice(index, 1);
-    setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-  };
+    if(isEmpty) return <h1>Your cart is empty</h1>
 
-  const totalPrice = cartItems.reduce(
-    (accumulator, currentItem) => accumulator + currentItem.price,
-    0
-  );
-
-  return (
+  return(
     <Container>
-      <div className="cart">
-        <h1 className="cart__title">Shopping Cart</h1>
-        {cartItems.length === 0 ? (
-          <p className="cart__empty-message">Your cart is empty.</p>
-        ) : (
-          <div className="cart__items">
-            {cartItems.map((item, index) => (
-              <div key={index} className="cart__item">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="cart__item-image"
-                />
-                <div className="cart__item-details">
-                  <h2 className="cart__item-title">{item.title}</h2>
-                  <p className="cart__item-price">${item.price.toFixed(2)}</p>
-                  <button
-                    className="cart__item-remove"
-                    onClick={() => handleRemoveFromCart(index)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ))}
-            <div className="cart__total">
-              <h2 className="cart__total-text">Total:</h2>
-              <p className="cart__total-price">${totalPrice.toFixed(2)}</p>
-            </div>
-            <Link to="/checkout" className="cart__checkout-button">
-              Checkout
-            </Link>
-          </div>
-        )}
-      </div>
+    <section>
+    <div className="cart-container">
+      <table className="cart-table">
+        <thead>
+        <tr>
+        <th>Item Image</th>
+        <th>Item Name</th>
+        <th>Item Details</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Edit item</th>
+      </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => {
+            return(
+              <tr key={index}>
+                <td><img src={item.imgUrl} alt="" /></td>
+                <td>{item.name}</td>
+                <td>{item.description}</td>
+                <td className="item-price">{item.price}</td>
+                <td className="item-quantity">{item.quantity}</td>
+                <td>
+                  <div className="edit-buttons">
+                  <button className="quantity-btn" onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>-</button>
+                  <button className="quantity-btn" onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>+</button>
+                  <button className="remove-btn" onClick={() => removeItem(item.id)}>Remove Item</button>
+                  </div>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
+    <div className="cart-details">
+      <h5>Cart Unique Items: {totalUniqueItems}</h5>
+      <h5>Total Items: {totalItems}</h5>
+      <h2 className="item-total">Total Price: ${cartTotal}</h2>
+    </div>
+    <div className="cart-buttons">
+      <button className="clear-btn" onClick={() => emptyCart()}>Clear Cart</button>
+      <button className="buy-btn">Buy Now</button>
+    </div>
+    </section>
     </Container>
-  );
+  )
 }
-
-export default Cart;
+export default Cart

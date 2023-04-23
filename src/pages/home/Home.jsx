@@ -4,7 +4,7 @@ import ArticleCard from "../../components/cards/ArticleCard";
 import { data } from "../../data";
 import "./Home.css";
 
-const Home = (props) => {
+const Home = () => {
   const [filteredData, setFilteredData] = useState();
   const cachedData = useMemo(() => {
     return (
@@ -29,16 +29,16 @@ const Home = (props) => {
       <p className="arts-section">Arts</p>
       <section className="articles">
         {filteredData &&
-          cachedData.map((article) => {
-            return <ArticleCard {...article} key={article.id} />;
+          cachedData.map((Product) => {
+            return <ArticleCard {...Product} key={Product.id} />;
           })}
       </section>
 
       <p className="featured-section">Featured Items</p>
       <section className="articles">
         {filteredData &&
-          cachedData.map((article) => {
-            return <ArticleCard {...article} key={article.id} />;
+          cachedData.map((Product) => {
+            return <ArticleCard {...Product} key={Product.id} />;
           })}
       </section>
     </Container>

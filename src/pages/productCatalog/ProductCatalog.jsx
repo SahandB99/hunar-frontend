@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./ProductCatalog.css";
 import Container from "../../components/container/Container";
 import { products } from "../../products";
+import {useCart} from "react-use-cart"
 
-const ProductCatalog = ({ onAddToCart }) => {
+const ProductCatalog = () => {
+  const {addItem} = useCart();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const handleCategoryChange = (event) => {
@@ -50,7 +52,7 @@ const ProductCatalog = ({ onAddToCart }) => {
               </p>
               <p className="product-catalog__item-price">${product.price}</p>
               <button
-                onClick={() => onAddToCart(product)}
+                onClick={() => addItem(product)}
                 className="product-catalog__item-button"
               >
                 Add to Cart
