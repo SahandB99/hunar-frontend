@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./ProductCatalog.css";
 import Container from "../../components/container/Container";
 import { products } from "../../products";
-import {useCart} from "react-use-cart"
+import { useCart } from "react-use-cart";
 
 const ProductCatalog = () => {
-  const {addItem} = useCart();
+  const { addItem } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -16,6 +17,10 @@ const ProductCatalog = () => {
     selectedCategory === "All"
       ? products
       : products.filter((product) => product.category === selectedCategory);
+
+  const searchedProducts = filteredProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <Container>
@@ -38,8 +43,20 @@ const ProductCatalog = () => {
             <option value="Western-art">Western-art</option>
           </select>
         </div>
+        <div className="product-catalog__search">
+          <label htmlFor="search" className="product-catalog__search-label">
+            Search Products:
+          </label>
+          <input
+            type="text"
+            id="search"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            className="product-catalog__search-input"
+          />
+        </div>
         <div className="product-catalog__list">
-          {filteredProducts.map((product) => (
+          {searchedProducts.map((product) => (
             <div key={product.id} className="product-catalog__item">
               <img
                 src={product.imgUrl}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import "./Products.css";
 import { products } from "../../products";
@@ -11,11 +11,9 @@ import Container from "../../components/container/Container";
 const Products = () => {
   const [searchValue, setSearch] = useSearchParams({ searchValue: "" });
   const text = searchValue.get("searchValue");
-  const location = useLocation();
+
 
   const [filteredProducts, setFilteredProducts] = useState();
-
-  // const [fetchData, setFetchData] = useState([]);
 
   const cachedProduct = useMemo(() => {
     return (
