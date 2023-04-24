@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./ArticleCard.styles.css";
 
-const ArticleCard = ({ id, title, desc, price, category, imgUrl }) => {
+const ArticleCard = ({ id, title, desc, imgUrl }) => {
   return (
     <article className="card">
       <figure>
@@ -12,11 +12,10 @@ const ArticleCard = ({ id, title, desc, price, category, imgUrl }) => {
       <div className="content">
         <h1>{title}</h1>
         <p className="description">{desc}</p>
-        <p className="price">{price}</p>
       </div>
-      <div className="read-more">
-        <Link to={`/productCatalog/${id}`}> Read more</Link>
-      </div>
+      <Link to={`/productCatalog/${id}`}>
+        <div className="read-more">Read more</div>
+      </Link>
     </article>
   );
 };
