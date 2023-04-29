@@ -94,3 +94,8 @@
 .product-catalog__item-button:active{
   transform: translateY(2px);
 }
+
+.product-catalog__search-input.focused {
+  outline: none;
+  box-shadow: 0 0 5px rgb(175, 175, 253);
+}
