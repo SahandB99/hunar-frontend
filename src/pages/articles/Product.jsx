@@ -20,18 +20,18 @@ const Product = () => {
 
   return (
     <Container>
-      <article className="product">
+      <article className="product-page-product">
         {product && (
           <>
-            <h1 className="product-title">{product.title}</h1>
+            <h1 className="product-name">{product.name}</h1>
             <figure>
-              <img src={product.imgUrl} alt="news" className="product-image" />
+              <img src={product.imgUrl} alt="news" className="product-page-image" />
             </figure>
-            <p className="product-description">{product.desc}</p>
-            <p className="product-price">{product.price}</p>
+            <p className="product-page-description">{product.description}</p>
+            <p className="product-page-price">${product.price}</p>
             <button
                 onClick={() => addItem(product)}
-                className="product-catalog__item-button"
+                className="product-page-catalog__item-button"
               >
                 Add to Cart
               </button>
