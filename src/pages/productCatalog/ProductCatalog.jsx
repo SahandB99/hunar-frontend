@@ -51,14 +51,14 @@ const ProductCatalog = () => {
             Search Products:
           </label>
           <input
-  type="text"
-  id="search"
-  value={searchQuery}
-  onChange={(event) => setSearchQuery(event.target.value)}
-  onFocus={() => setSearchFocused(true)}
-  onBlur={() => setSearchFocused(false)}
-  className={`product-catalog__search-input border border-gray-500 rounded-lg ml-2 ${searchFocused ? 'focused' : ''}`}
-/>
+            type="text"
+            id="search"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => setSearchFocused(false)}
+            className={`product-catalog__search-input border border-gray-500 rounded-lg ml-2 ${searchFocused ? 'focused' : ''}`}
+          />
 
         </div>
         <div className="product-catalog__list">
