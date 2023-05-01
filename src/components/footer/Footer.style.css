@@ -5,6 +5,7 @@
     justify-content: space-between;
     padding: 40px;
     align-items: center;
+    bottom: 0;
   }
   
   .footer-info h2,
