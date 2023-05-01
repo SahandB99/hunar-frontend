@@ -20,9 +20,8 @@ const Home = () => {
     <Container>
       <section className="hunar-section">
         <h1 className="hunar-title">Hunar</h1>
-        <p className="hunar-desc">
-          Your best website for buying and selling Arts, Antiques, Vintage and
-          Sculptures
+        <p className="hunar-desc">Discover a world of beauty and creativity with our diverse collection of paintings, sculptures, and more. Whether you're an art enthusiast, collector, or simply looking to add a touch of elegance to your space, we have something for everyone.
+    
         </p>
       </section>
 

@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import ProductCatalog from "./pages/productCatalog/ProductCatalog";
 import Cart from "./pages/cart/Cart";
 import { CartProvider } from "react-use-cart";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const isDark = useSelector((state) => state.theme.isDark);
@@ -27,15 +28,9 @@ function App() {
           <Route path=":id" element={<Product />} />
         </Route>
         <Route path="/cart" element={<Cart />} />
-
-        {/* <Route path="/articles">
-          <Route index element={<Articles />} />
-          <Route path=":id" element={<Product />} />
-          <Route path="addarticle" element={<AddArticle />} />
-        </Route> */}
-
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
       </CartProvider>
     </div>
   );
