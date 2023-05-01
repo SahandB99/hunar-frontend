@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Container.style.css";
 
-const Container = ({ children, isDark }) => {
+const Container = ({ children }) => {
   return <div className="container">{children}</div>;
 };
 

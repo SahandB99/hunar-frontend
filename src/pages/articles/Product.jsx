@@ -30,7 +30,7 @@ const Product = () => {
             <p className="product-page-description">{product.description}</p>
             <p className="product-page-price">${product.price}</p>
             <button
-                onClick={() => addItem(product)}
+                onClick={() => {addItem(product); window.alert(`${product.name} has been added to the cart.`);}}
                 className="product-page-catalog__item-button"
               >
                 Add to Cart

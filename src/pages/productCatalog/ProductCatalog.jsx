@@ -76,7 +76,7 @@ const ProductCatalog = () => {
               <p className="product-catalog__item-price">${product.price}</p>
               <div className="flex">
               <button
-                onClick={() => addItem(product)}
+                onClick={() => {addItem(product); window.alert(`${product.name} has been added to the cart.`);}}
                 className="product-catalog__item-button"
               >
                 Add to Cart
