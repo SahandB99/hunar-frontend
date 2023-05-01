@@ -25,6 +25,7 @@
 .product-catalog__filter-dropdown {
   font-size: 1.2rem;
   padding: 10px;
+  color: black;
 }
 
 .product-catalog__list {
@@ -91,8 +92,12 @@
   background-color: #ec6a1e;
 }
 
-.product-catalog__item-button:active{
+.product-catalog__item-button:active {
   transform: translateY(2px);
+}
+
+.product-catalog__search-input {
+  color: black;
 }
 
 .product-catalog__search-input.focused {
