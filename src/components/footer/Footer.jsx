@@ -1,16 +1,8 @@
 import React from 'react';
 import './Footer.style.css';
-import { Link, NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { changeTheme } from "../../redux/themeSlice";
-import Button from "../button/Button";
-import { logout } from "../../redux/userSlice";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
-    const isDark = useSelector((state) => state.theme.isDark);
-    const user = useSelector((state) => state.user.data);
-    const dispatch = useDispatch();
-
   return (
     <div className="footer">
       <div className="footer-info">
@@ -19,16 +11,7 @@ function Footer() {
       </div>
       <div className="footer-links">
         <h2>Quick Links</h2>
-        <ul>
-          <li>
-            <input
-              type="checkbox"
-              checked={isDark}
-              id="darkMode"
-              onChange={() => dispatch(changeTheme())}
-            />
-            <label>Dark</label>
-          </li>
+        <ul className="flex">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -37,15 +20,6 @@ function Footer() {
           </li>
           <li>
             <NavLink to="/cart">Cart</NavLink>
-          </li>
-          <li>
-            {user.email ? (
-              <Button text="Logout" handleClick={() => dispatch(logout())} />
-            ) : (
-              <Link to="/login">
-                <Button text="Login" />
-              </Link>
-            )}
           </li>
         </ul>
       </div>
