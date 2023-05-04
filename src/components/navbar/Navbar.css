@@ -117,8 +117,8 @@ body {
 }
 
 .nav-elements ul a.active {
-  color: #574c4c;
-  font-weight: 500;
+  color: #fda310;
+  font-weight: 600;
   position: relative;
 }
 
@@ -179,7 +179,7 @@ body {
     font-size: 50px;
   }
 
-  .nav-elements ul a {
+  .nav-elements ul a.active {
     font-size: 24px;
   }
 
