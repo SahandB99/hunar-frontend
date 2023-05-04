@@ -31,7 +31,7 @@ const Product = () => {
             <p className="product-page-price">${product.price}</p>
             <button
                 onClick={() => {addItem(product); window.alert(`${product.name} has been added to the cart.`);}}
-                className="product-page-catalog__item-button"
+                className="product-page-catalog__item-button mb-2"
               >
                 Add to Cart
               </button>

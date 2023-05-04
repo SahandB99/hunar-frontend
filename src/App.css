@@ -16,15 +16,15 @@
 }
 
 
-img {
+/* img {
   max-width: 100%;
-}
+} */
 
-.navbar {
+/* .navbar {
   height: 70px;
-}
+} */
 
-.navbar .logo img {
+/* .navbar .logo img {
   height: 110px;
 }
 
@@ -59,7 +59,7 @@ img {
 
 .logo-name {
   margin-left: -15px;
-}
+} */
 
 .header {
   background-color: rgb(238, 255, 231);
@@ -93,12 +93,12 @@ img {
   width: 100%;
 }
 
-a.active {
+/* a.active {
   color: green;
   text-decoration: underline;
-}
+} */
 
-.bg-dark {
+/* .bg-dark {
   background-color: #000;
   color: #fff;
   min-height: 100vh;
@@ -110,9 +110,9 @@ a.active {
 
 #darkMode {
   cursor: pointer;
-}
+} */
 
-.logo {
+/* .logo {
   display: flex;
   align-items: center;
-}
+} */

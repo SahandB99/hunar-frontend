@@ -71,3 +71,8 @@
     }
     
   }
+
+  @media screen and (max-width: 355px){
+  .footer-info {
+    width: 250px;
+  }}
