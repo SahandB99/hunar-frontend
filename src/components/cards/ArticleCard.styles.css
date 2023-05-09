@@ -11,7 +11,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 550px;
+  min-height: 600px;
+  text-align: center;
 }
 
 .card figure {
@@ -39,17 +40,27 @@
 }
 
 .read-more {
-  background-color:rgb(20, 32, 60);
+  background-color: rgb(20, 32, 60);
   border-radius: 5px;
   color: #ffffff;
   font-size: 16px;
   margin: 20px;
   padding: 10px 20px;
-  text-align: center;
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .read-more:hover {
-  background-color:rgb(253, 163, 16);
+  background-color: rgb(253, 163, 16);
   cursor: pointer;
+}
+
+.article-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.article-name {
+  font-size: 1.5rem;
 }

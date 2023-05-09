@@ -1,0 +1,78 @@
+.register-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 70px 0px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-form .register-title {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 28px;
+  text-align: center;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="username"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #ced4da;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #495057;
+}
+
+.register-form input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.register-form input[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+.register-form .required {
+  color: #dc3545;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.register-error {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  translate: 0px -620px;
+  font-size: 2rem;
+}

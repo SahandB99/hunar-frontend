@@ -2,6 +2,7 @@ import React from "react";
 import { useCart } from "react-use-cart";
 import Container from "../../components/container/Container";
 import "./Cart.styles.css";
+import cartImg from "../../assets/images/carts.png";
 
 const Cart = () => {
   const {
@@ -18,7 +19,8 @@ const Cart = () => {
   if (isEmpty)
     return (
       <Container>
-        <div className="header-info">
+        <div className="header-info h-60">
+          <img src={cartImg} alt="" className="h-20" />
           <h1 className="text-red-600 text-3xl">Your cart is empty</h1>
           <p className="font-semibold">
             Try adding some products to your cart and come back again
@@ -29,7 +31,7 @@ const Cart = () => {
 
   return (
     <Container>
-      <section>
+      <section className="mb-2">
         <div className="cart-container">
           <table className="cart-table">
             <thead>

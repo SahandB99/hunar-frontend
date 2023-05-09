@@ -97,7 +97,7 @@
   background-color: #666;
 }
 
-.articles{
+.articles {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

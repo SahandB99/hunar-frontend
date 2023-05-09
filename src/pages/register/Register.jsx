@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Container from "../../components/container/Container";
 import { login } from "../../redux/userSlice";
-import "./Login.style.css";
+import "./Register.styles.css";
 
-const Login = () => {
+const Register = () => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -60,14 +60,23 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="login-form-container">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2 className="login-title">Login</h2>
+      <div className="register-form-container">
+        <form className="register-form" onSubmit={handleSubmit}>
+          <h2 className="register-title">Register</h2>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
             name="email"
             id="email"
+            value={formData.email}
+            onChange={handleInput}
+            className="required"
+          />
+          <label htmlFor="username">Username:</label>
+          <input
+            type="username"
+            name="username"
+            id="username"
             value={formData.email}
             onChange={handleInput}
             className="required"
@@ -85,13 +94,13 @@ const Login = () => {
           <input
             type="submit"
             disabled={status !== "typing" || status === "submitting"}
-            value={status === "submitting" ? "Logging in..." : "login"}
+            value={status === "submitting" ? "Registering..." : "Register"}
           />
           <div className="flex-col text-center mt-5">
-            <h2 className="text-black">Don't have an account?</h2>
-            <Link to="/register">
+            <h2 className="text-black">Already have an account?</h2>
+            <Link to="/login">
               <h1 className="text-xl text-gray-800 hover:text-sky-500 underline decoration-sky-500">
-                Register Here
+                Login Here
               </h1>
             </Link>
           </div>
@@ -121,4 +130,4 @@ function submitForm({ email, password }) {
   });
 }
 
-export default Login;
+export default Register;

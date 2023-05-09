@@ -42,8 +42,8 @@ const ProductCatalog = () => {
             <option value="All">All</option>
             <option value="Art">Art</option>
             <option value="Sculptor">Sculptor</option>
-            <option value="Post-impressionist">Post-impressionist</option>
-            <option value="Western-art">Western-art</option>
+            <option value="Painting">Painting</option>
+            <option value="Western">Western-art</option>
           </select>
         </div>
         <div className="product-catalog__search flex items-center">
@@ -57,9 +57,10 @@ const ProductCatalog = () => {
             onChange={(event) => setSearchQuery(event.target.value)}
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
-            className={`product-catalog__search-input border border-gray-500 rounded-lg ml-2 ${searchFocused ? 'focused' : ''}`}
+            className={`product-catalog__search-input border border-gray-500 rounded-lg ml-2 ${
+              searchFocused ? "focused" : ""
+            }`}
           />
-
         </div>
         <div className="product-catalog__list">
           {searchedProducts.map((product) => (
@@ -75,15 +76,21 @@ const ProductCatalog = () => {
               </p>
               <p className="product-catalog__item-price">${product.price}</p>
               <div className="flex">
-              <button
-                onClick={() => {addItem(product); window.alert(`${product.name} has been added to the cart.`);}}
-                className="product-catalog__item-button"
-              >
-                Add to Cart
-              </button>
-              <Link to={`/productCatalog/${product.id}`} className="product-catalog__item-button ml-2">
-                Read More
-              </Link>
+                <button
+                  onClick={() => {
+                    addItem(product);
+                    window.alert(`${product.name} has been added to the cart.`);
+                  }}
+                  className="product-catalog__item-button"
+                >
+                  Add to Cart
+                </button>
+                <Link
+                  to={`/productCatalog/${product.id}`}
+                  className="product-catalog__item-button ml-2"
+                >
+                  Read More
+                </Link>
               </div>
             </div>
           ))}

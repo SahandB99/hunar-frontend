@@ -11,6 +11,7 @@ import ProductCatalog from "./pages/productCatalog/ProductCatalog";
 import Cart from "./pages/cart/Cart";
 import { CartProvider } from "react-use-cart";
 import Footer from "./components/footer/Footer";
+import Register from "./pages/register/Register";
 
 function App() {
   const isDark = useSelector((state) => state.theme.isDark);
@@ -18,19 +19,20 @@ function App() {
   return (
     <div className={isDark ? "bg-dark" : ""}>
       <CartProvider>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        <Route path="/productCatalog">
-          <Route index element={<ProductCatalog />} />
-          <Route path=":id" element={<Product />} />
-        </Route>
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer/>
+          <Route path="/productCatalog">
+            <Route index element={<ProductCatalog />} />
+            <Route path=":id" element={<Product />} />
+          </Route>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
       </CartProvider>
     </div>
   );

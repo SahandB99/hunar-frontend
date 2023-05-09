@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Container from "../../components/container/Container";
 import ArticleCard from "../../components/cards/ArticleCard";
-import { data } from "../../data";
+import { products } from "../../products";
 import "./Home.css";
 
 const Home = () => {
-  const [filteredData, setFilteredData] = useState();
-  const cachedData = useMemo(() => {
+  const [filteredProducts, setFilteredProducts] = useState();
+  const cachedProducts = useMemo(() => {
     return (
-      filteredData && filteredData.map((fd) => ({ ...fd, date: Date.now() }))
+      filteredProducts && filteredProducts.map((fd) => ({ ...fd, date: Date.now() }))
     );
-  }, [filteredData]);
+  }, [filteredProducts]);
 
   useEffect(() => {
-    setFilteredData(data.slice(0, 4));
+    setFilteredProducts(products.slice(0, 4));
   }, []);
 
   return (
@@ -27,16 +27,16 @@ const Home = () => {
 
       <p className="arts-section">Arts</p>
       <section className="articles">
-        {filteredData &&
-          cachedData.map((Product) => {
+        {filteredProducts &&
+          cachedProducts.map((Product) => {
             return <ArticleCard {...Product} key={Product.id} />;
           })}
       </section>
 
       <p className="featured-section">Featured Items</p>
       <section className="articles">
-        {filteredData &&
-          cachedData.map((Product) => {
+        {filteredProducts &&
+          cachedProducts.map((Product) => {
             return <ArticleCard {...Product} key={Product.id} />;
           })}
       </section>
