@@ -1,54 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
 import Container from "../../components/container/Container";
-import { login } from "../../redux/userSlice";
 import "./Login.style.css";
+import { useGetCurrentUserQuery, useLoginMutation } from "../../api/auth";
+import { addUser } from "../../api/globalSlices/user.slices";
 
 const Login = () => {
   const dispatch = useDispatch();
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({});
+  const [token, setToken] = useState();
+  const { user } = useSelector((state) => state.user);
+  const [login, { data: loginData, isError: loginDataIsError }] =
+    useLoginMutation();
+  const { data: userData, isError: userDataIsError } = useGetCurrentUserQuery(
+    token,
+    { skip: !token }
+  );
 
   const [error, setError] = useState(null);
-
   const [status, setStatus] = useState("empty");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("submitting");
-    try {
-      await submitForm(formData);
-      setStatus("success");
-    } catch (err) {
-      setStatus("typing");
-      setError(err);
-    }
-    dispatch(login(formData));
-    /* 
-      {
-        type: "user/login", 
-      payload: {
-        email: ...,
-        password: ...
-      }}
-    */
-  };
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    login(formData);
+  };
+
   useEffect(() => {
-    if (formData.email !== "" && formData.password !== "") {
-      setStatus("typing");
-    } else {
-      setStatus("empty");
+    if (!loginDataIsError && loginData) {
+      localStorage.setItem("access_token", loginData?.token);
+      setToken(loginData?.token);
     }
-  }, [formData]);
+  }, [loginData]);
+
+  useEffect(() => {
+    console.log("test");
+    if (!userDataIsError && userData) {
+      dispatch(addUser(userData.data.user));
+    }
+  }, [userData]);
+
+  if (user) return <Navigate to="/" replace />;
 
   if (error) {
     console.log(typeof error);
@@ -105,20 +102,5 @@ const Login = () => {
     </Container>
   );
 };
-
-function submitForm({ email, password }) {
-  // Pretend it's hitting the network.
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let invalidEmail = email.toLowerCase() !== "sahand@gmail.com";
-      let invalidPassword = password.toLowerCase() !== "sahand";
-      if (invalidEmail || invalidPassword) {
-        reject(new Error("Invalid Email Address"));
-      } else {
-        resolve();
-      }
-    }, 1500);
-  });
-}
 
 export default Login;

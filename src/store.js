@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-import themeReducer from "./redux/themeSlice";
-import userReducer from "./redux/userSlice";
+import { api } from "./api/api";
+import userSlice from "./api/globalSlices/user.slices";
 
 export default configureStore({
   reducer: {
-    theme: themeReducer,
-    user: userReducer,
+    [api.reducerPath]: api.reducer,
+    user: userSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });

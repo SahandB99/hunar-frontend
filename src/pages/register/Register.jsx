@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Container from "../../components/container/Container";
-import { login } from "../../redux/userSlice";
+import Error from "../../common/error/Error";
+import { useSignupMutation } from "../../api/auth";
+import { addUser } from "../../api/globalSlices/user.slices";
 import "./Register.styles.css";
 
 const Register = () => {
@@ -11,58 +13,50 @@ const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
+    username: "",
   });
 
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
 
-  const [status, setStatus] = useState("empty");
+  const { user } = useSelector((state) => state.user);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("submitting");
-    try {
-      await submitForm(formData);
-      setStatus("success");
-    } catch (err) {
-      setStatus("typing");
-      setError(err);
-    }
-    dispatch(login(formData));
-    /* 
-      {
-        type: "user/login", 
-      payload: {
-        email: ...,
-        password: ...
-      }}
-    */
-  };
+  const [signUp, { data: response, isError }] = useSignupMutation();
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    if (formData.email !== "" && formData.password !== "") {
-      setStatus("typing");
-    } else {
-      setStatus("empty");
+  const [status, setStatus] = useState("empty");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.confirmPassword !== formData.password) {
+      setErrors([...errors, "passwords didn't match"]);
+      return;
     }
-  }, [formData]);
 
-  if (error) {
-    console.log(typeof error);
-  }
+    signUp(formData);
+  };
 
-  if (status === "success") {
-    return <h1>You're logged In</h1>;
-  }
+  useEffect(() => {
+    if (!isError && response) {
+      localStorage.setItem("access_token", response?.data.token);
+      dispatch(addUser(response.data.user));
+    }
+  }, [response]);
+
+  if (user) return <Navigate to="/" replace />;
 
   return (
     <Container>
       <div className="register-form-container">
         <form className="register-form" onSubmit={handleSubmit}>
           <h2 className="register-title">Register</h2>
+
+          {errors.length > 0 && <Error messages={errors} />}
+
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -70,16 +64,17 @@ const Register = () => {
             id="email"
             value={formData.email}
             onChange={handleInput}
-            className="required"
+            required={true}
           />
           <label htmlFor="username">Username:</label>
           <input
-            type="username"
+            type="text"
             name="username"
             id="username"
-            value={formData.email}
+            value={formData.username}
             onChange={handleInput}
-            className="required"
+            required={true}
+            minLength={8}
           />
           <label htmlFor="password">Password:</label>
           <input
@@ -88,7 +83,17 @@ const Register = () => {
             name="password"
             value={formData.password}
             onChange={handleInput}
-            className="required"
+            required={true}
+            minLength={8}
+          />
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInput}
+            required={true}
           />
 
           <input
@@ -106,28 +111,8 @@ const Register = () => {
           </div>
         </form>
       </div>
-      {error ? (
-        <p className="error" style={{ color: "red" }}>
-          {error.message}
-        </p>
-      ) : null}
     </Container>
   );
 };
-
-function submitForm({ email, password }) {
-  // Pretend it's hitting the network.
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let invalidEmail = email.toLowerCase() !== "sahand@gmail.com";
-      let invalidPassword = password.toLowerCase() !== "sahand";
-      if (invalidEmail || invalidPassword) {
-        reject(new Error("Invalid Email Address"));
-      } else {
-        resolve();
-      }
-    }, 1500);
-  });
-}
 
 export default Register;

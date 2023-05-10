@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { useGetArtsQuery } from "../../api/arts";
 import "./ProductCatalog.css";
 import Container from "../../components/container/Container";
 import { products } from "../../products";
@@ -6,6 +8,8 @@ import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
 
 const ProductCatalog = () => {
+  const { data, isLoading } = useGetArtsQuery();
+
   const { addItem } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -96,6 +100,39 @@ const ProductCatalog = () => {
           ))}
         </div>
       </div>
+      {isLoading ? (
+        <p>loading...</p>
+      ) : (
+        data.data.map((art) => (
+          <tr>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+              {art.name}
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+              {art.description}
+            </td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+              {art.price}
+            </td>
+          </tr>
+        ))
+      )}
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={(e) => {
+          console.log(e.selected);
+        }}
+        className="flex justify-center gap-1 text-xs font-medium"
+        pageLinkClassName="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+        activeClassName="block h-8 w-8 rounded border-teal-600 bg-teal-600 text-center leading-8 text-white"
+        nextClassName="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+        previousClassName="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+        pageRangeDisplayed={3}
+        pageCount={10}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+      />
     </Container>
   );
 };
